@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Text, TouchableOpacity, View, Image, ScrollView, Picker } from 'react-native';
 import styles from './restaurantsScreen.styles';
+import Header from './Header';
+import Footer from './Footer';
 
 const restaurantImages = [
   require('../../assets/Restaurants/cuisineGreek.jpg'),
@@ -74,6 +76,7 @@ export default function RestaurantsScreen() {
 
   return (
     <View style={styles.container}>
+      <Header />
       <View style={styles.filterContainer}>
         <Picker
           style={styles.filterPicker}
@@ -92,7 +95,7 @@ export default function RestaurantsScreen() {
           selectedValue={priceFilter}
           onValueChange={handlePriceFilter}
         >
-          <Picker.Item label="Select Price" value="select" />
+           <Picker.Item label="Select Price" value="select" />
           <Picker.Item label="$" value="1" />
           <Picker.Item label="$$" value="2" />
           <Picker.Item label="$$$" value="3" />
@@ -100,11 +103,11 @@ export default function RestaurantsScreen() {
         
       </View>
       <ScrollView style={styles.restaurantList}>{renderRestaurantCards()}</ScrollView>
+      <View style={styles.footer}><Footer/>
+      </View>
     </View>
   );
 }
-
-
 
 
 
