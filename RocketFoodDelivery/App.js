@@ -42,6 +42,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 // Import your screen components
 import HomeScreen from './src/screens/HomeScreen';
 import LoginScreen from './src/screens/LoginScreen';
+import RestaurantMenu from './src/screens/RestaurantMenu';
+import OrderHistory from './src/screens/OrderHistory';
+import AccountCourier from './src/screens/AccountCourier';
+import UserPages from './src/screens/UserPages';
 
 // Define your navigation stack
 const Stack = createStackNavigator();
@@ -50,7 +54,7 @@ const Stack = createStackNavigator();
 function Header({ navigation }) {
   return (
     <View>
-      <Text>Header</Text>
+
     </View>
   );
 }
@@ -61,6 +65,10 @@ function App() {
       <Stack.Navigator>
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Home" component={HomeScreen} options={{ headerTitle: () => <Header navigation={navigation} /> }} />
+        <Stack.Screen name="RestaurantMenu" component={RestaurantMenu} options={{ headerTitle: () => <Header navigation={navigation} /> }} />
+        <Stack.Screen name="OrderHistory" component={OrderHistory} options={{ headerTitle: () => <Header navigation={navigation} /> }} />
+        <Stack.Screen name="UserPages" component={UserPages} options={{ headerTitle: () => <Header navigation={navigation} /> }} />
+        <Stack.Screen name="AccountCourier" component={AccountCourier} options={{ headerTitle: () => <Header navigation={navigation} /> }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

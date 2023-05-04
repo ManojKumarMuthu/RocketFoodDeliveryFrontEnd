@@ -13,15 +13,15 @@ export default function Footer() {
   };
   return (
     <View style={styles.headerContainer}>
-      <View style={styles.headerLeft}>
-        <Image source={AppLogoV2} style={styles.logo} resizeMode={"contain"} /> 
-      </View>
       <View style={styles.headerRight}>
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('OrderHistory')}>
           <Text style={styles.buttonText}>Order History</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('HomeScreen')}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Home')}>
           <Text style={styles.buttonText}>Restaurant</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('AccountCourier')}>
+          <Text style={styles.buttonText}>Account</Text>
         </TouchableOpacity>
       </View>
     </View>

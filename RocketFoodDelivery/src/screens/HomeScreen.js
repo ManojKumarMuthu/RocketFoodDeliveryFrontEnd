@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Text, TouchableOpacity, View, Image, ScrollView, Picker } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import styles from './restaurantsScreen.styles';
 import Header from './Header';
 import Footer from './Footer';
@@ -18,6 +19,7 @@ export default function RestaurantsScreen() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [data, setData] = useState([]);
+  const navigation = useNavigation();
 
   const handleRatingFilter = (value) => {
     setRatingFilter(value);
@@ -27,8 +29,8 @@ export default function RestaurantsScreen() {
     setPriceFilter(value);
   };
 
-  const handleRestaurantClick = () => {
-    // navigate to restaurant menu/order page
+  const handleRestaurantClick = (restaurant) => {
+    navigation.navigate('RestaurantMenu', { restaurant });
   };
 
   useEffect(() => {
@@ -62,7 +64,7 @@ export default function RestaurantsScreen() {
       <TouchableOpacity
         key={index}
         style={styles.restaurantCard}
-        onPress={handleRestaurantClick}
+        onPress={() => handleRestaurantClick(restaurant)}
       >
         <Image source={restaurantImages[index]} style={styles.restaurantImage} />
         <View style={styles.restaurantInfo}>
@@ -95,7 +97,7 @@ export default function RestaurantsScreen() {
           selectedValue={priceFilter}
           onValueChange={handlePriceFilter}
         >
-           <Picker.Item label="Select Price" value="select" />
+            <Picker.Item label="Select Price" value="select" />
           <Picker.Item label="$" value="1" />
           <Picker.Item label="$$" value="2" />
           <Picker.Item label="$$$" value="3" />
@@ -108,7 +110,3 @@ export default function RestaurantsScreen() {
     </View>
   );
 }
-
-
-
-

@@ -1,21 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import {
-  Rating
-} from 'react-native-stock-star-rating';
-import {
-  StyleSheet,
-  Image,
-  ScrollView,
-  Text,
-  TouchableOpacity
-} from 'react-native';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import { Rating } from 'react-native-stock-star-rating';
+import { StyleSheet, Image, ScrollView, Text, TouchableOpacity } from 'react-native';
+import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import Header from './Header';
+import Footer from './Footer';
 
-import Cuisine from '../../assets/images/restaurants/cuisineViet.jpg';
+import Cuisine from '../../assets/Restaurants/cuisineViet.jpg';
 
 const formatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -89,6 +79,7 @@ export default function Menu({ route }) {
   const productList = () => {
     return products.map(product => {
       return (
+        
         <Row key={product.id}>
           <Col>
             <Image style={styles.menuPic} source={Cuisine} />
@@ -96,7 +87,7 @@ export default function Menu({ route }) {
           <Col>
             <h2>{product.name}</h2>
             <Text>{formatter.format(product.cost)}</Text>
-            <Text>Lorem ipsum</Text>
+            <Text></Text>
             <Row>
               <Col>
                 <Button variant="link" onClick={() => handleDecrement(product.id)}>-</Button>
@@ -126,6 +117,7 @@ export default function Menu({ route }) {
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+          <Header />
       <style type="text/css">
         {`
             .btn-rdelivery {
@@ -136,6 +128,7 @@ export default function Menu({ route }) {
         `}
       </style>
       <Container fluid className="m-3">
+        
         <Row>
           <Col>
             <h1>Restaurant Menu</h1>
@@ -159,6 +152,7 @@ export default function Menu({ route }) {
         </Row>
         {productList()}
       </Container>
+      <Footer />
     </ScrollView>
   );
 }
@@ -171,4 +165,12 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   }
 });
+
+
+
+
+
+
+
+
 
